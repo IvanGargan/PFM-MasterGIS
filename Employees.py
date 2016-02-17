@@ -13,8 +13,8 @@ import random
 import time
 
 #Variables
-arcpy.env.workspace = r"C:\Student\PFM\PFM.gdb\NuclearPowerPlant\Employees"
-Employees = arcpy.env.workspace
+#arcpy.env.workspace = r"C:\Student\PFM\PFM.gdb"
+Employees = arcpy.GetParameter(0)
 MoveX = random.uniform(-50,50)
 MoveY = random.uniform(-50,50)
 
@@ -22,5 +22,8 @@ MoveY = random.uniform(-50,50)
 with arcpy.da.UpdateCursor(Employees, ["SHAPE@XY"]) as cursor:
     for row in cursor:
         cursor.updateRow([[row[0][0] + MoveX,row[0][1] + MoveY]])
+
+arcpy.MakeFeatureLayer_management(Employees,Employees2,)
+time.sleep(30)
 
 print "Script Completed"

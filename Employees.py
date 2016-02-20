@@ -12,16 +12,22 @@
 import arcpy
 import random
 import time
+
 #Sobreescribir
 arcpy.env.overwriteOutput = True
 
 #Parametros
-arcpy.env.workspace = r"C:\Student\PFM\PFM.gdb"#arcpy.GetParameterAsText(0) #Workspace
-Employees = r"C:\Student\PFM\PFM.gdb\NuclearPowerPlant\Employees" #arcpy.GetParameter(1) #FeatureClass
+arcpy.env.workspace = r"C:\Student\PFM\PFM.gdb"
+#arcpy.env.workspace = arcpy.GetParameterAsText(0) #Workspace
+
+Employees = r"C:\Student\PFM\PFM.gdb\NuclearPowerPlant\Employees"
+#Employees = arcpy.GetParameter(1) #FeatureClass
+
+i = 0 #Variable para contar las iteraciones
 
 while True:
     #Variables
-    MoveX = random.uniform(-5,5) #Genera numero aleatorio entre -50 y 50 y...
+    MoveX = random.uniform(-5,5) #Genera numero aleatorio entre -"" y +"" y...
     MoveY = random.uniform(-5,5) #...lo suma a las coordenadas del empleado.
 
     #Actualizar coordenadas con el cursor
@@ -32,8 +38,14 @@ while True:
     #Creacion de una layer para evitar locks
     lyr = arcpy.MakeFeatureLayer_management("Employees","Employees_layer")
 
-    print "Script Completed"
+    #Suponemos que en la decima iteracion se reporta el accidente a los...
+    #empleados y dejan de moverse.
+    i += 1
+    if i == 11:
+        break
+
+    print "Iteracion {}".format(i)
 
 #Intervalo de tiempo en el que se "mueven" los empleados
-    time.sleep(20)
+    time.sleep(10)
 

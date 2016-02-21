@@ -17,11 +17,11 @@ import time
 arcpy.env.overwriteOutput = True
 
 #Parametros
-arcpy.env.workspace = r"C:\Student\PFM\PFM.gdb"
-#arcpy.env.workspace = arcpy.GetParameterAsText(0) #Workspace
+#arcpy.env.workspace = r"C:\Student\PFM\PFM.gdb"
+arcpy.env.workspace = arcpy.GetParameterAsText(0) #Workspace
 
-Employees = r"C:\Student\PFM\PFM.gdb\NuclearPowerPlant\Employees"
-#Employees = arcpy.GetParameter(1) #FeatureClass
+#Employees = r"C:\Student\PFM\PFM.gdb\NuclearPowerPlant\Employees"
+Employees = arcpy.GetParameterAsText(1) #FeatureClass
 
 i = 0 #Variable para contar las iteraciones
 

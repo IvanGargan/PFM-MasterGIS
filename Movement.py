@@ -15,10 +15,9 @@ import time
 #Sobreescribir
 arcpy.env.overwriteOutput = True
 #Parametros
-#Workspace = arcpy.GetParameterAsText(0)
+#wksp ="Database Connections\SECURITY@FACILITY.sde"
 wksp ="C:\Users\Ivan\AppData\Roaming\Esri\Desktop10.3\ArcCatalog\SECURITY@FACILITY.sde"
 arcpy.env.workspace = wksp
-#Employees = arcpy.GetParameterAsText(1)
 #Employees = "Database Connections\SO@FACILITY.sde\Facility.DBO.Employees"
 Employees = r"C:\Users\Ivan\AppData\Roaming\Esri\Desktop10.3\ArcCatalog\SECURITY@FACILITY.sde\Facility.DBO.Employees"
 #Start an edit session. Must provide the workspace.
